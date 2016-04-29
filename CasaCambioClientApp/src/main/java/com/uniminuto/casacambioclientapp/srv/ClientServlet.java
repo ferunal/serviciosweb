@@ -49,11 +49,11 @@ public class ClientServlet extends HttpServlet {
             out.println("<h1>Servlet ClientServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-
+            String montoParam = request.getParameter("monto");
             try { // Call Web Service Operation
                 CasaCambioWS port = service.getCasaCambioWSPort();
                 // TODO initialize WS operation arguments here
-                double monto = 3.0d;
+                double monto = Double.parseDouble(montoParam);
                 // TODO process result here
                 double result = port.cambiarDolaresSoles(monto);
                 out.println("Result = " + result);
